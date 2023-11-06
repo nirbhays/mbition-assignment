@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/optimal-harbor-404302/user-list-app:$SHORT_SHA'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/optimal-harbor-404302/user-list-app:$SHORT_SHA'
+images:
+  - 'gcr.io/optimal-harbor-404302/user-list-app:$SHORT_SHA'
