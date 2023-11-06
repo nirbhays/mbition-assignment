@@ -8,7 +8,7 @@ WORKDIR /usr/src/app
 COPY mb-assignment.html .
 
 # Exposing a port for the web application (optional)
-EXPOSE 80
+EXPOSE 8080
 
 # Start a simple HTTP server to serve the HTML page
-CMD ["npx", "http-server", "-p", "80"]
+CMD ["npx", "http-server", "-p", "8080"]
