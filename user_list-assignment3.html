@@ -44,8 +44,8 @@
 
     <script>
         // Function to fetch data from the JSON API
-        function fetchUserData() {
-            fetch('https://reqres.in/api/users')
+        function fetchUserData(url) {
+            fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     data.data.forEach(user => {
@@ -64,8 +64,11 @@
                 .catch(error => console.error('Error fetching data:', error));
         }
 
-        // Call the fetchUserData function to load data
-        fetchUserData();
+        // Call the fetchUserData function to load data from the first page
+        fetchUserData('https://reqres.in/api/users');
+
+        // Call the fetchUserData function to load data from the second page
+        fetchUserData('https://reqres.in/api/users?page=2');
     </script>
 </body>
 </html>
