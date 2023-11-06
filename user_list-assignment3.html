@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .user-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            margin: 10px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .user-avatar {
+            border-radius: 50%;
+            max-width: 100px;
+            max-height: 100px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 36px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>User List</h1>
+
+    <script>
+        // Function to fetch data from the JSON API
+        function fetchUserData() {
+            fetch('https://reqres.in/api/users')
+                .then(response => response.json())
+                .then(data => {
+                    data.data.forEach(user => {
+                        const userCard = document.createElement('div');
+                        userCard.className = 'user-card';
+                        userCard.innerHTML = `
+                            <img class="user-avatar" src="${user.avatar}" alt="Avatar">
+                            <p><strong>ID:</strong> ${user.id}</p>
+                            <p><strong>First Name:</strong> ${user.first_name}</p>
+                            <p><strong>Last Name:</strong> ${user.last_name}</p>
+                            <p><strong>Email:</strong> ${user.email}</p>
+                        `;
+                        document.body.appendChild(userCard);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Call the fetchUserData function to load data
+        fetchUserData();
+    </script>
+</body>
+</html>
