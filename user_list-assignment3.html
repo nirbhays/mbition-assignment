@@ -22,26 +22,18 @@
             width: 250px;
             margin: 10px;
             padding: 20px;
-            text-align: left;
+            text-align: center;
         }
 
         .user-avatar {
-            border-radius: 50%;
+            border-radius: 100%;
             max-width: 100px;
             max-height: 100px;
             margin-bottom: 10px;
         }
-
-        h1 {
-            color: #333;
-            font-size: 36px;
-            margin: 20px 0;
-        }
     </style>
 </head>
 <body>
-    <h1>User List</h1>
-
     <script>
         // Function to fetch data from the JSON API
         function fetchUserData(url) {
@@ -53,10 +45,8 @@
                         userCard.className = 'user-card';
                         userCard.innerHTML = `
                             <img class="user-avatar" src="${user.avatar}" alt="Avatar">
-                            <p><strong>ID:</strong> ${user.id}</p>
-                            <p><strong>First Name:</strong> ${user.first_name}</p>
-                            <p><strong>Last Name:</strong> ${user.last_name}</p>
-                            <p><strong>Email:</strong> ${user.email}</p>
+                            <p> ${user.first_name} ${user.last_name}</p>
+                            <p> ${user.email}</p>
                         `;
                         document.body.appendChild(userCard);
                     });
